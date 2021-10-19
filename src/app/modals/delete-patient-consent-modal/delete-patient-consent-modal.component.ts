@@ -12,7 +12,6 @@ import { ICON_DELETE } from 'src/app/constants/icons';
 export class DeletePatientConsentModal implements OnInit {
 
   @Input() consent?: Consent;
-  test = 23; //delete this once data passing is good
 
   // icon/s
   iDelete = ICON_DELETE;
@@ -28,8 +27,8 @@ export class DeletePatientConsentModal implements OnInit {
         this.consent);
 
     // Close modal assuming that there was no problem with
-    // the deletion
-    this.activeModal.close();
+    // the deletion and send the ID back to the parent
+    this.activeModal.close(this.consent);
   }
 
   closeModal(sendData: any) {

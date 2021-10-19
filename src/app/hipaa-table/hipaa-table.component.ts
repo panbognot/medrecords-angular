@@ -83,12 +83,15 @@ export class HipaaTableComponent implements OnInit {
   }
 
   openDeleteConsentModal(consent: Consent) {
-    console.log("openEditConsentModal: ", consent);
+    console.log("openDeleteConsentModal: ", consent);
     const modalRef = this.modalService.open(DeletePatientConsentModal);
 
     modalRef.componentInstance.consent = consent;
     modalRef.result.then(
-      (result) => { console.log(result); },
+      (result) => {
+        console.log("openDeleteConsentModal: result", result);
+        this.delete(result);
+      },
       (reason) => {}
     );
   }
@@ -99,6 +102,11 @@ export class HipaaTableComponent implements OnInit {
 
   openViewFileModal() {
     const modalRef = this.modalService.open(ViewFileModal);
+  }
+
+  delete(consent: Consent): void {
+    this.consents = this.consents.filter(c => c !== consent);
+    // Insert the service deletion here
   }
 
 }
