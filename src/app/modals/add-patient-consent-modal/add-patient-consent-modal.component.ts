@@ -11,7 +11,9 @@ import { ICON_ADD, ICON_CALENDAR } from 'src/app/constants/icons';
 })
 export class AddPatientConsentModal implements OnInit {
 
-  @Input() consent?: Consent;
+  consent: Consent | undefined;
+  signedValue: string = '';
+  expiresValue: string = '';
 
   // icons
   iAdd = ICON_ADD;
@@ -21,6 +23,20 @@ export class AddPatientConsentModal implements OnInit {
 
   ngOnInit(): void {
     console.log("AddPatientConsentModal: ", this.consent);
+  }
+
+  add(): void {
+    console.log("add: ", this.signedValue, this.expiresValue);
+    this.consent = {
+      id: -1,
+      status: 'Active',
+      hipaa_signed: this.signedValue,
+      hipaa_expires: this.expiresValue
+    };
+
+    // Close modal assuming that there was no problem with
+    // the deletion and send the ID back to the parent
+    this.activeModal.close(this.consent);
   }
 
   closeModal(sendData: any) {

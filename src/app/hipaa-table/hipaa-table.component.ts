@@ -67,8 +67,31 @@ export class HipaaTableComponent implements OnInit {
     this.consents = this.consentService.getConsents();
   }
 
+  add(consent: Consent): void {
+    // New Consent ID is highest ID + 1
+    const maxId = this.consents.reduce((highest, cons) =>
+      highest = highest > cons.id ? highest : cons.id, 0
+    );
+    consent.id = maxId + 1;
+
+    this.consents.push(consent);
+  }
+
+  delete(consent: Consent): void {
+    this.consents = this.consents.filter(c => c !== consent);
+    // TODO: Insert the service deletion here
+  }
+
   openAddConsentModal() {
     const modalRef = this.modalService.open(AddPatientConsentModal);
+
+    modalRef.result.then(
+      (result) => {
+        console.log("openAddConsentModal: result", result);
+        this.add(result);
+      },
+      (reason) => {}
+    );
   }
 
   openEditConsentModal(consent: Consent) {
@@ -102,11 +125,6 @@ export class HipaaTableComponent implements OnInit {
 
   openViewFileModal() {
     const modalRef = this.modalService.open(ViewFileModal);
-  }
-
-  delete(consent: Consent): void {
-    this.consents = this.consents.filter(c => c !== consent);
-    // Insert the service deletion here
   }
 
 }

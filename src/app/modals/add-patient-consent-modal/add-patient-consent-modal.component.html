@@ -10,10 +10,30 @@
 </div>
 <div class="modal-body">
   <p>The body of the modal goes here</p>
+  <div class="row">
+    <div class="col-6">
+      <span class="text-danger"><b>*</b></span>
+      Signed:
+      <div class="input-group">
+        <input type="date" class="form-control"
+            placeholder="HIPAA signed" [(ngModel)]="signedValue"
+            data-date-format="MM/dd/YYYY">
+      </div>
+    </div>
+    <div class="col-6">
+      <span class="text-danger"><b>*</b></span>
+      Expires:
+      <div class="input-group">
+        <input type="date" class="form-control"
+            placeholder="HIPAA expires" [(ngModel)]="expiresValue"
+            data-date-format="MM/dd/YYYY">
+      </div>
+    </div>
+  </div>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-success"
-      (click)="closeModal('changes saved!')">
+      (click)="add()">
     Save
   </button>
   <button type="button" class="btn btn-outline-dark"
