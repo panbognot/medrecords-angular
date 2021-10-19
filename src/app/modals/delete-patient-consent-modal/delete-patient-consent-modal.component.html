@@ -1,4 +1,4 @@
-<!-- <div *ngIf="consent"> -->
+<div *ngIf="consent">
   <div class="modal-header">
     <h4 class="modal-title">
       <fa-icon [icon]="iDelete"></fa-icon>
@@ -12,7 +12,7 @@
   <div class="modal-body">
     <p>
       Delete the Patient Consent
-      with <b>ID: {{ test }}</b> and all its data?
+      <b>(ID: {{ consent.id }})</b> and all its data?
     </p>
   </div>
   <div class="modal-footer">
@@ -25,4 +25,4 @@
       Cancel
     </button>
   </div>
-<!-- </div> -->
+</div>

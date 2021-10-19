@@ -26,6 +26,10 @@ export class DeletePatientConsentModal implements OnInit {
   deleteConsent() {
     console.log("DeletePatientConsentModal: deleteConsent()",
         this.consent);
+
+    // Close modal assuming that there was no problem with
+    // the deletion
+    this.activeModal.close();
   }
 
   closeModal(sendData: any) {
