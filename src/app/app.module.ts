@@ -20,6 +20,10 @@ import {
 import {
   DeletePatientConsentModal
 } from './modals/delete-patient-consent-modal/delete-patient-consent-modal.component';
+import {
+  AttachFileModal
+} from './modals/attach-file-modal/attach-file-modal.component';
+import { ViewFileModal } from './modals/view-file-modal/view-file-modal.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,9 @@ import {
     HipaaTableComponent,
     AddPatientConsentModal,
     EditPatientConsentModal,
-    DeletePatientConsentModal
+    DeletePatientConsentModal,
+    AttachFileModal,
+    ViewFileModal
   ],
   imports: [
     BrowserModule,

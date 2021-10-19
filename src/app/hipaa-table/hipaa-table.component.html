@@ -32,12 +32,14 @@
             {{ consent.hipaa_expires | date:'MM/dd/YYYY' }}
           </td>
           <td>
-            <button type="button" class="btn btn-attach" placement="top">
+            <button type="button" class="btn btn-attach" placement="top"
+                (click)="openAttachModal()">
               <fa-icon [icon]="iAttach"
                   ngbTooltip="{{ ttAttach }}">
               </fa-icon>
             </button>
-            <button type="button" class="btn btn-view" placement="top">
+            <button type="button" class="btn btn-view" placement="top"
+                (click)="openViewFileModal()">
               <fa-icon [icon]="iView"
                   ngbTooltip="{{ ttView }}">
               </fa-icon>
