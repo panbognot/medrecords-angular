@@ -71,8 +71,15 @@ export class HipaaTableComponent implements OnInit {
     const modalRef = this.modalService.open(AddPatientConsentModal);
   }
 
-  openEditConsentModal() {
+  openEditConsentModal(consent: Consent) {
+    console.log("openEditConsentModal: ", consent);
     const modalRef = this.modalService.open(EditPatientConsentModal);
+
+    modalRef.componentInstance.consent = consent;
+    modalRef.result.then(
+      (result) => { console.log(result); },
+      (reason) => {}
+    );
   }
 
   openDeleteConsentModal() {
