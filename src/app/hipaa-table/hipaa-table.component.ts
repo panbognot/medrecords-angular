@@ -5,6 +5,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   AddPatientConsentModal
 } from '../modals/add-patient-consent-modal/add-patient-consent-modal.component';
+import {
+  EditPatientConsentModal
+} from '../modals/edit-patient-consent-modal/edit-patient-consent-modal.component';
 
 // Project Services
 import { ConsentService } from '../services/consent.service';
@@ -57,6 +60,10 @@ export class HipaaTableComponent implements OnInit {
 
   openAddConsentModal() {
     const modalRef = this.modalService.open(AddPatientConsentModal);
+  }
+
+  openEditConsentModal() {
+    const modalRef = this.modalService.open(EditPatientConsentModal);
   }
 
 }

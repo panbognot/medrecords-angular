@@ -11,13 +11,19 @@ import { AppComponent } from './app.component';
 import { HipaaTableComponent } from './hipaa-table/hipaa-table.component';
 
 // Modal Components
-import { AddPatientConsentModal } from './modals/add-patient-consent-modal/add-patient-consent-modal.component';
+import {
+  AddPatientConsentModal
+} from './modals/add-patient-consent-modal/add-patient-consent-modal.component';
+import {
+  EditPatientConsentModal
+} from './modals/edit-patient-consent-modal/edit-patient-consent-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HipaaTableComponent,
-    AddPatientConsentModal
+    AddPatientConsentModal,
+    EditPatientConsentModal
   ],
   imports: [
     BrowserModule,

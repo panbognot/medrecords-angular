@@ -45,7 +45,8 @@
           </td>
           <td>
             <button type="button" class="btn btn-edit" placement="top" >
-              <fa-icon [icon]="iEdit" ngbTooltip="{{ ttEdit }}">
+              <fa-icon [icon]="iEdit" ngbTooltip="{{ ttEdit }}"
+              (click)="openEditConsentModal()">
               </fa-icon>
             </button>
             <button type="button" class="btn btn-delete" placement="top">
