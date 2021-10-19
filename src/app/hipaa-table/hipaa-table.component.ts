@@ -135,8 +135,9 @@ export class HipaaTableComponent implements OnInit {
     const modalRef = this.modalService.open(AttachFileModal);
   }
 
-  openViewFileModal() {
+  openViewFileModal(consent: Consent) {
     const modalRef = this.modalService.open(ViewFileModal);
+    modalRef.componentInstance.consent = consent;
   }
 
 }

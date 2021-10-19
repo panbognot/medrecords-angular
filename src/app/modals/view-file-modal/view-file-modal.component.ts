@@ -16,10 +16,16 @@ export class ViewFileModal implements OnInit {
   // icons
   iView = ICON_VIEW;
 
+  seed: number = 0;
+  url: string = '';
+
   constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
-    console.log("ViewFileModal: ", this.consent);
+    this.seed = this.consent ? this.consent.id : 237;
+    this.url = 'https://picsum.photos/id/' + this.seed + '/picsum/300';
+
+    console.log("ViewFileModal: ", this.consent, this.url);
   }
 
   closeModal(sendData: any) {

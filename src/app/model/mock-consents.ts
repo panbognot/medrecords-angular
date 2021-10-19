@@ -5,7 +5,8 @@ export const CONSENTS: Consent[] = [
     id: 1,
     status: 'Active',
     hipaa_signed: '04/24/2021',
-    hipaa_expires: '04/06/2022'
+    hipaa_expires: '04/06/2022',
+    attachment: 'https://picsum.photos/id/237/300/'
   },
   {
     id: 2,
