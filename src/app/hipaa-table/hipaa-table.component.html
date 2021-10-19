@@ -2,7 +2,8 @@
   <div class="card-header">
     HIPAA
     <button type="button" class="btn btn-sm btn-success"
-        placement="right" ngbTooltip="{{ ttAdd }}">
+        placement="right" ngbTooltip="{{ ttAdd }}"
+        (click)="openAddConsentModal()">
       <fa-icon [icon]="iAdd"></fa-icon>
     </button>
   </div>

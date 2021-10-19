@@ -5,14 +5,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // 3rd Party Libraries
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+// Custom Modules & Components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HipaaTableComponent } from './hipaa-table/hipaa-table.component';
 
+// Modal Components
+import { AddPatientConsentModal } from './modals/add-patient-consent-modal/add-patient-consent-modal.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    HipaaTableComponent
+    HipaaTableComponent,
+    AddPatientConsentModal
   ],
   imports: [
     BrowserModule,

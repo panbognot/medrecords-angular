@@ -1,8 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-// Project Custom Files
+// Project Components
+import {
+  AddPatientConsentModal
+} from '../modals/add-patient-consent-modal/add-patient-consent-modal.component';
+
+// Project Services
+import { ConsentService } from '../services/consent.service';
+
+// Project Models and Constants
 import { Consent } from '../model/consent';
-import { CONSENTS } from '../model/mock-consents';
 import {
   ICON_ADD, ICON_ATTACH, ICON_VIEW, ICON_EDIT, ICON_DELETE
 } from '../constants/icons';
@@ -32,11 +40,23 @@ export class HipaaTableComponent implements OnInit {
   ttEdit = MESSAGE_EDIT;
   ttDelete = MESSAGE_DELETE;
 
-  consents = CONSENTS;
+  consents: Consent[] = [];
 
-  constructor() { }
+  constructor(
+    private modalService: NgbModal,
+    private consentService: ConsentService
+  ) { }
 
   ngOnInit(): void {
+    this.getConsents();
+  }
+
+  getConsents(): void {
+    this.consents = this.consentService.getConsents();
+  }
+
+  openAddConsentModal() {
+    const modalRef = this.modalService.open(AddPatientConsentModal);
   }
 
 }
