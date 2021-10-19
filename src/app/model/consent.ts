@@ -2,9 +2,9 @@ export class Consent {
 
   constructor(
     public id: number,
-    public status: Boolean,
-    public hippa_signed: Date,
-    public hippa_expires: Date,
+    public status: string,
+    public hipaa_signed: Date,
+    public hipaa_expires: Date,
     public attachment?: any
   ) {}
 

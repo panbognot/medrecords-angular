@@ -1,0 +1,27 @@
+.btn-attach, .btn-view {
+  font-weight: 400;
+  color: #39393a;
+  text-decoration: none;
+
+  :hover {
+    color: #007bff;
+  }
+}
+.btn-edit {
+  font-weight: 400;
+  color: #17a2b8;
+  text-decoration: none;
+
+  :hover {
+    color: #23d3ee;
+  }
+}
+.btn-delete {
+  font-weight: 400;
+  color: #dc3545;
+  text-decoration: none;
+
+  :hover {
+    color: rgb(252, 21, 44);
+  }
+}

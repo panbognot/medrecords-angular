@@ -1,0 +1,60 @@
+<div class="card">
+  <div class="card-header">
+    HIPAA
+    <button type="button" class="btn btn-sm btn-success"
+        placement="right" ngbTooltip="{{ ttAdd }}">
+      <fa-icon [icon]="iAdd"></fa-icon>
+    </button>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+        <tr class="bg-primary text-light">
+          <th scope="col">ID</th>
+          <th scope="col">Status</th>
+          <th scope="col">HIPAA Signed</th>
+          <th scope="col">HIPAA Expires</th>
+          <th scope="col">Attach / View</th>
+          <th scope="col">Edit / Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let consent of consents">
+          <td scope="row">{{ consent.id }}</td>
+          <td>
+            {{ consent.status }}
+          </td>
+          <td>
+            {{ consent.hipaa_signed | date:'MM/dd/YYYY' }}
+          </td>
+          <td>
+            {{ consent.hipaa_expires | date:'MM/dd/YYYY' }}
+          </td>
+          <td>
+            <button type="button" class="btn btn-attach" placement="top">
+              <fa-icon [icon]="iAttach"
+                  ngbTooltip="{{ ttAttach }}">
+              </fa-icon>
+            </button>
+            <button type="button" class="btn btn-view" placement="top">
+              <fa-icon [icon]="iView"
+                  ngbTooltip="{{ ttView }}">
+              </fa-icon>
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-edit" placement="top" >
+              <fa-icon [icon]="iEdit" ngbTooltip="{{ ttEdit }}">
+              </fa-icon>
+            </button>
+            <button type="button" class="btn btn-delete" placement="top">
+              <fa-icon [icon]="iDelete"
+                  ngbTooltip="{{ ttDelete }}">
+              </fa-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
