@@ -111,7 +111,9 @@ export class HipaaTableComponent implements OnInit {
     modalRef.result.then(
       (result) => {
         console.log("openEditConsentModal: result", result);
-        this.update(consent, result);
+        if (result) {
+          this.update(consent, result);
+        }
       },
       (reason) => {}
     );

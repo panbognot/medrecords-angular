@@ -48,8 +48,8 @@ export class EditPatientConsentModal implements OnInit {
     console.log("Converting to string: ", this.dateSigned, this.dateExpires);
   }
 
-  closeModal(sendData: any) {
-    this.activeModal.close(sendData);
+  closeModal() {
+    this.activeModal.close();
   }
 
   onSave() {
