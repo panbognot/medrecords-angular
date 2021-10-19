@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
-// 3rd Party Libraries
-import {
-  faPlus, faPaperclip, faEye, faEdit, faTrashAlt
-} from '@fortawesome/free-solid-svg-icons';
-
 // Project Custom Files
 import { Consent } from '../model/consent';
 import { CONSENTS } from '../model/mock-consents';
+import {
+  ICON_ADD, ICON_ATTACH, ICON_VIEW, ICON_EDIT, ICON_DELETE
+} from '../constants/icons';
+import {
+  MESSAGE_ADD, MESSAGE_ATTACH, MESSAGE_VIEW,
+  MESSAGE_EDIT, MESSAGE_DELETE
+} from '../constants/tooltip-messages';
 
 @Component({
   selector: 'hipaa-table',
@@ -16,19 +18,19 @@ import { CONSENTS } from '../model/mock-consents';
 })
 export class HipaaTableComponent implements OnInit {
 
-  // font awesome icons
-  iAdd = faPlus;
-  iAttach = faPaperclip;
-  iView = faEye
-  iEdit = faEdit;
-  iDelete = faTrashAlt;
+  // Icons to display
+  iAdd = ICON_ADD;
+  iAttach = ICON_ATTACH;
+  iView = ICON_VIEW;
+  iEdit = ICON_EDIT
+  iDelete = ICON_DELETE;
 
   // tooltip messages
-  ttAdd = "Add a new HIPAA entry";
-  ttAttach = "Attach a file";
-  ttView = "View attached file";
-  ttEdit = "Edit the HIPAA data";
-  ttDelete = "Delete the HIPAA data";
+  ttAdd = MESSAGE_ADD;
+  ttAttach = MESSAGE_ATTACH;
+  ttView = MESSAGE_VIEW;
+  ttEdit = MESSAGE_EDIT;
+  ttDelete = MESSAGE_DELETE;
 
   consents = CONSENTS;
 
