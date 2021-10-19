@@ -77,6 +77,15 @@ export class HipaaTableComponent implements OnInit {
     this.consents.push(consent);
   }
 
+  update(consentOrig: Consent, consentNew: Consent): void {
+    // Find the index of the original consent data
+    let index = this.consents.findIndex(
+        consent => consent === consentOrig
+    );
+    // Replace it with the new consent data
+    this.consents[index] = consentNew;
+  }
+
   delete(consent: Consent): void {
     this.consents = this.consents.filter(c => c !== consent);
     // TODO: Insert the service deletion here
@@ -100,7 +109,10 @@ export class HipaaTableComponent implements OnInit {
 
     modalRef.componentInstance.consent = consent;
     modalRef.result.then(
-      (result) => { console.log(result); },
+      (result) => {
+        console.log("openEditConsentModal: result", result);
+        this.update(consent, result);
+      },
       (reason) => {}
     );
   }

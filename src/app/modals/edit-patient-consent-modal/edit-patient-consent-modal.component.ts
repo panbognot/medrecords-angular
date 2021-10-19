@@ -20,8 +20,8 @@ export class EditPatientConsentModal implements OnInit {
   iCalendar = ICON_CALENDAR;
 
   // Dates to strings
-  dateSigned: any;
-  dateExpires: any;
+  dateSigned: string = '';
+  dateExpires: string = '';
 
   bsDate: NgbDate | undefined;
 
@@ -32,6 +32,13 @@ export class EditPatientConsentModal implements OnInit {
 
   ngOnInit(): void {
     console.log("EditPatientConsentModal: ", this.consent);
+
+    if(this.consent?.hipaa_signed) {
+      this.dateSigned = this.consent.hipaa_signed.slice();
+    }
+    if(this.consent?.hipaa_expires) {
+      this.dateExpires = this.consent?.hipaa_expires.slice();
+    }
 
     // this.dateSigned = this.datePipe
     //     .transform(this.consent?.hipaa_signed, 'MM/dd/YYYY');
@@ -46,7 +53,23 @@ export class EditPatientConsentModal implements OnInit {
   }
 
   onSave() {
-    // this.consent?.hipaa_signed = new Date(this.dateSigned);
+    let updatedConsent: Consent;
+
+    // TODO: Validations before updating the data
+
+    updatedConsent = {
+      id: this.consent ? this.consent.id : -1,
+      status: this.consent ? this.consent.status : 'Unknown',
+      hipaa_signed: this.dateSigned,
+      hipaa_expires: this.dateExpires
+    };
+
+    console.log("onSave():", updatedConsent);
+
+    // Close modal assuming that there was no problem with
+    // the validation and send the updated consent back
+    // to the parent
+    this.activeModal.close(updatedConsent);
   }
 
 }

@@ -19,7 +19,7 @@
         <div class="input-group">
           <input type="text" class="form-control"
               placeholder="HIPAA signed"
-              [(ngModel)]="consent.hipaa_signed">
+              [(ngModel)]="dateSigned">
         </div>
         <!-- <div class="input-group">
           <input type="text" class="form-control"
@@ -45,14 +45,14 @@
         <div class="input-group">
           <input type="text" class="form-control"
               placeholder="HIPAA expires"
-              [(ngModel)]="consent.hipaa_expires">
+              [(ngModel)]="dateExpires">
         </div>
       </div>
     </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-info"
-        (click)="closeModal('changes saved!')">
+        (click)="onSave()">
       Save
     </button>
     <button type="button" class="btn btn-outline-dark"
