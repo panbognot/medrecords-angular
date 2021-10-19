@@ -17,13 +17,17 @@ import {
 import {
   EditPatientConsentModal
 } from './modals/edit-patient-consent-modal/edit-patient-consent-modal.component';
+import {
+  DeletePatientConsentModal
+} from './modals/delete-patient-consent-modal/delete-patient-consent-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HipaaTableComponent,
     AddPatientConsentModal,
-    EditPatientConsentModal
+    EditPatientConsentModal,
+    DeletePatientConsentModal
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,9 @@ import {
 import {
   EditPatientConsentModal
 } from '../modals/edit-patient-consent-modal/edit-patient-consent-modal.component';
+import {
+  DeletePatientConsentModal
+} from '../modals/delete-patient-consent-modal/delete-patient-consent-modal.component';
 
 // Project Services
 import { ConsentService } from '../services/consent.service';
@@ -64,6 +67,10 @@ export class HipaaTableComponent implements OnInit {
 
   openEditConsentModal() {
     const modalRef = this.modalService.open(EditPatientConsentModal);
+  }
+
+  openDeleteConsentModal() {
+    const modalRef = this.modalService.open(DeletePatientConsentModal);
   }
 
 }

@@ -44,14 +44,14 @@
             </button>
           </td>
           <td>
-            <button type="button" class="btn btn-edit" placement="top" >
-              <fa-icon [icon]="iEdit" ngbTooltip="{{ ttEdit }}"
-              (click)="openEditConsentModal()">
+            <button type="button" class="btn btn-edit" placement="top"
+                (click)="openEditConsentModal()">
+              <fa-icon [icon]="iEdit" ngbTooltip="{{ ttEdit }}">
               </fa-icon>
             </button>
-            <button type="button" class="btn btn-delete" placement="top">
-              <fa-icon [icon]="iDelete"
-                  ngbTooltip="{{ ttDelete }}">
+            <button type="button" class="btn btn-delete" placement="top"
+                (click)="openDeleteConsentModal()">
+              <fa-icon [icon]="iDelete" ngbTooltip="{{ ttDelete }}">
               </fa-icon>
             </button>
           </td>
