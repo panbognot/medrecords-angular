@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 // Project Services
 import { ConsentService } from '../services/consent.service';
@@ -10,6 +10,11 @@ import {
   MESSAGE_ADD, MESSAGE_ATTACH, MESSAGE_VIEW,
   MESSAGE_EDIT, MESSAGE_DELETE
 } from '../constants/tooltip-messages';
+
+// Project Modals
+import {
+  DeleteConsentModalNzComponent
+} from '../modals-nz/delete-consent-modal-nz/delete-consent-modal-nz.component';
 
 @Component({
   selector: 'hipaa-table-nz',
@@ -28,7 +33,7 @@ export class HipaaTableNzComponent implements OnInit {
   consents: Consent[] = [];
 
   constructor(
-    private modalService: NgbModal,
+    private modalService: NzModalService,
     private consentService: ConsentService
   ) { }
 
@@ -73,7 +78,7 @@ export class HipaaTableNzComponent implements OnInit {
 
   delete(consent: Consent): void {
     this.consents = this.consents.filter(c => c !== consent);
-    // TODO: Insert the service deletion here
+    // Insert the service deletion here
     this.consentService.deleteConsent(consent.id).subscribe();
   }
 
@@ -106,17 +111,24 @@ export class HipaaTableNzComponent implements OnInit {
   }
 
   openDeleteConsentModal(consent: Consent) {
-    // console.log("openDeleteConsentModal: ", consent);
-    // const modalRef = this.modalService.open(DeletePatientConsentModal);
+    console.log("openDeleteConsentModal: ", consent);
 
-    // modalRef.componentInstance.consent = consent;
-    // modalRef.result.then(
-    //   (result) => {
-    //     console.log("openDeleteConsentModal: result", result);
-    //     this.delete(result);
-    //   },
-    //   (reason) => {}
-    // );
+    const modalRef = this.modalService.create({
+      nzTitle: 'Delete HIPAA Consent',
+      nzContent: DeleteConsentModalNzComponent,
+      nzComponentParams: {
+        consent: consent
+      }
+    });
+
+    modalRef.afterClose
+      .subscribe(result => {
+        if (result) {
+          console.log('[afterClose] The result is:', result);
+          this.delete(result);
+        }
+      },
+      (reason) => {});
   }
 
   openAttachModal() {

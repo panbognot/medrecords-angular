@@ -38,6 +38,7 @@ import {
   AttachFileModal
 } from './modals/attach-file-modal/attach-file-modal.component';
 import { ViewFileModal } from './modals/view-file-modal/view-file-modal.component';
+import { DeleteConsentModalNzComponent } from './modals-nz/delete-consent-modal-nz/delete-consent-modal-nz.component';
 
 registerLocaleData(en);
 
@@ -56,7 +57,8 @@ const icons: IconDefinition[] =
     DeletePatientConsentModal,
     AttachFileModal,
     ViewFileModal,
-    HipaaTableNzComponent
+    HipaaTableNzComponent,
+    DeleteConsentModalNzComponent
   ],
   imports: [
     BrowserModule,

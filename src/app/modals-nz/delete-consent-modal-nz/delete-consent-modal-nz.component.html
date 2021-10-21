@@ -1,0 +1,16 @@
+<div>
+  <p>
+    Delete this Patient Consent
+    <b>(ID: {{ consent.id }})</b> and all its data?
+  </p>
+</div>
+<div *nzModalFooter>
+  <button nz-button nzType="primary" nzDanger
+      (click)="deleteConsent()">
+    Yes, delete it
+  </button>
+  <button nz-button nzType="default"
+      (click)="destroyModal()">
+    Cancel
+  </button>
+</div>
