@@ -15,6 +15,7 @@ import {
 import {
   DeleteConsentModalNzComponent
 } from '../modals-nz/delete-consent-modal-nz/delete-consent-modal-nz.component';
+import { AddConsentModalNzComponent } from '../modals-nz/add-consent-modal-nz/add-consent-modal-nz.component';
 
 @Component({
   selector: 'hipaa-table-nz',
@@ -59,6 +60,8 @@ export class HipaaTableNzComponent implements OnInit {
         // Add the new consent to the current consents array to
         // update the HIPAA table in real time
         this.consents.push(consent);
+        // Apparently, this updates the nz table data...
+        this.consents = [...this.consents];
       });
   }
 
@@ -83,6 +86,20 @@ export class HipaaTableNzComponent implements OnInit {
   }
 
   openAddConsentModal() {
+    const modalRef = this.modalService.create({
+      nzTitle: 'Add New HIPAA Consent',
+      nzContent: AddConsentModalNzComponent
+    });
+
+    modalRef.afterClose
+    .subscribe(result => {
+      if (result) {
+        console.log('openAddConsentModal() [afterClose]:', result);
+        this.add(result);
+      }
+    },
+    (reason) => {});
+
     // const modalRef = this.modalService.open(AddPatientConsentModal);
 
     // modalRef.result.then(

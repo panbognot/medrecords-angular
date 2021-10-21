@@ -1,9 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  NzModalRef, NzModalService
-} from 'ng-zorro-antd/modal';
-
-import { Consent } from 'src/app/model/consent';
+import { NzModalRef } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'delete-consent-modal',
@@ -25,7 +21,7 @@ export class DeleteConsentModalNzComponent implements OnInit {
     console.log("DeleteConsentModalComponent: ", this.consent);
   }
 
-  deleteConsent() {
+  delete() {
     // Close modal assuming that there was no problem with
     // the deletion and send the ID back to the parent
     this.modal.close(this.consent);

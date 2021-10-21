@@ -6,7 +6,8 @@
         HIPPA
         <button nz-button nzType="text" nzSize="default"
             nz-tooltip nzTooltipColor="green"
-            [nzTooltipTitle]="ttAdd">
+            [nzTooltipTitle]="ttAdd"
+            (click)="openAddConsentModal()">
           <i nz-icon nzType="plus-circle" nzTheme="twotone"
               nzTwotoneColor="#52c41a">
           </i>
