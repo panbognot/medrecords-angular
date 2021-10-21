@@ -1,0 +1,30 @@
+<div nz-row nzJustify="center">
+  <div nz-col [nzSpan]=12>
+    <h4>
+      <span class="text-danger"><b>*</b></span>
+      Signed:
+    </h4>
+    <nz-date-picker [nzFormat]="dateFormat"
+        [(ngModel)]="signedValue" nzSize="large">
+    </nz-date-picker>
+  </div>
+  <div nz-col [nzSpan]=12>
+    <h4>
+      <span class="text-danger"><b>*</b></span>
+      Expires:
+    </h4>
+    <nz-date-picker [nzFormat]="dateFormat"
+        [(ngModel)]="expiresValue" nzSize="large">
+    </nz-date-picker>
+  </div>
+</div>
+<div *nzModalFooter>
+  <button nz-button nzType="primary"
+      (click)="onSave()">
+    Save
+  </button>
+  <button nz-button nzType="default"
+      (click)="destroyModal()">
+    Cancel
+  </button>
+</div>
