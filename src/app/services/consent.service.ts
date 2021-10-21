@@ -21,17 +21,25 @@ export class ConsentService {
     private http: HttpClient
   ) { }
 
-  getConsents(): Consent[] {
-    return CONSENTS;
+  // GET consents from the API server
+  getConsents(): Observable<Consent[]> {
+    return this.http.get<Consent[]>(this.consentsUrl)
+      .pipe(
+        tap(_ => this.log('fetched consents')),
+        catchError(this.handleError<Consent[]>('getConsentsObs', []))
+      );
   }
 
-  // GET consents from the API server
-  getConsentsObs(): Observable<Consent[]> {
-    return this.http.get<Consent[]>(this.consentsUrl)
-        .pipe(
-          tap(_ => this.log('fetched consents')),
-          catchError(this.handleError<Consent[]>('getConsentsObs', []))
-        );
+  // POST: add a new consent to the server
+  addConsent(consent: Consent): Observable<Consent> {
+    return this.http.post<Consent>
+      (this.consentsUrl, consent, this.httpOptions)
+      .pipe(
+        tap((newConsent: Consent) =>
+          this.log(`added consent w/ id=${newConsent.id}`)
+        ),
+        catchError(this.handleError<Consent>('addConsent'))
+      );
   }
 
   // DELETE: delete the consent from the API server

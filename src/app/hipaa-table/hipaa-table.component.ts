@@ -64,9 +64,8 @@ export class HipaaTableComponent implements OnInit {
   }
 
   getConsents(): void {
-    // this.consents = this.consentService.getConsents();
-    this.consentService.getConsentsObs()
-        .subscribe(consents => this.consents = consents);
+    this.consentService.getConsents()
+      .subscribe(consents => this.consents = consents);
   }
 
   add(consent: Consent): void {
@@ -76,7 +75,13 @@ export class HipaaTableComponent implements OnInit {
     );
     consent.id = maxId + 1;
 
-    this.consents.push(consent);
+    // Call the consents service to add it to the database
+    this.consentService.addConsent(consent)
+      .subscribe(consent => {
+        // Add the new consent to the current consents array to
+        // update the HIPAA table in real time
+        this.consents.push(consent);
+      });
   }
 
   update(consentOrig: Consent, consentNew: Consent): void {
