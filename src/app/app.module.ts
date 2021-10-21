@@ -1,11 +1,18 @@
 import { NgModule } from '@angular/core';
 import { DatePipe, registerLocaleData } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import en from '@angular/common/locales/en';
 
 // 3rd Party Libraries
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './services/in-memory-data.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
 
 // Custom Modules & Components
 import { AppRoutingModule } from './app-routing.module';
@@ -27,11 +34,6 @@ import {
 } from './modals/attach-file-modal/attach-file-modal.component';
 import { ViewFileModal } from './modals/view-file-modal/view-file-modal.component';
 import { HipaaTableNzComponent } from './hipaa-table-nz/hipaa-table-nz.component';
-import { NZ_I18N } from 'ng-zorro-antd/i18n';
-import { en_US } from 'ng-zorro-antd/i18n';
-import en from '@angular/common/locales/en';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(en);
 
@@ -48,13 +50,21 @@ registerLocaleData(en);
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     NgbModule,
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    /*
+      The HttpClientInMemoryWebApiModule module intercepts HTTP
+      requests and returns simulated server responses. Remove
+      it when a real server is ready to receive requests.
+    */
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    ),
+    AppRoutingModule
   ],
   providers: [DatePipe, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

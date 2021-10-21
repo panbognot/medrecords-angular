@@ -64,7 +64,9 @@ export class HipaaTableComponent implements OnInit {
   }
 
   getConsents(): void {
-    this.consents = this.consentService.getConsents();
+    // this.consents = this.consentService.getConsents();
+    this.consentService.getConsentsObs()
+        .subscribe(consents => this.consents = consents);
   }
 
   add(consent: Consent): void {
