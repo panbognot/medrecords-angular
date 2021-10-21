@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { DatePipe, registerLocaleData } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -26,6 +26,14 @@ import {
   AttachFileModal
 } from './modals/attach-file-modal/attach-file-modal.component';
 import { ViewFileModal } from './modals/view-file-modal/view-file-modal.component';
+import { HipaaTableNzComponent } from './hipaa-table-nz/hipaa-table-nz.component';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import en from '@angular/common/locales/en';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -35,7 +43,8 @@ import { ViewFileModal } from './modals/view-file-modal/view-file-modal.componen
     EditPatientConsentModal,
     DeletePatientConsentModal,
     AttachFileModal,
-    ViewFileModal
+    ViewFileModal,
+    HipaaTableNzComponent
   ],
   imports: [
     BrowserModule,
@@ -43,9 +52,11 @@ import { ViewFileModal } from './modals/view-file-modal/view-file-modal.componen
     NgbModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
