@@ -51,7 +51,8 @@
             <td>
               <button nz-button nzType="text" nzSize="default"
                   nz-tooltip nzTooltipColor="blue"
-                  [nzTooltipTitle]="ttEdit">
+                  [nzTooltipTitle]="ttEdit"
+                  (click)="openEditConsentModal(consent)">
                 <i nz-icon nzType="edit" nzTheme="twotone">
                 </i>
               </button>

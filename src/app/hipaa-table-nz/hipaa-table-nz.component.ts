@@ -16,6 +16,7 @@ import {
   DeleteConsentModalNzComponent
 } from '../modals-nz/delete-consent-modal-nz/delete-consent-modal-nz.component';
 import { AddConsentModalNzComponent } from '../modals-nz/add-consent-modal-nz/add-consent-modal-nz.component';
+import { EditConsentModalNzComponent } from '../modals-nz/edit-consent-modal-nz/edit-consent-modal-nz.component';
 
 @Component({
   selector: 'hipaa-table-nz',
@@ -76,6 +77,8 @@ export class HipaaTableNzComponent implements OnInit {
       .subscribe(() => {
         // Update the consent data of this component
         this.consents[index] = consentNew;
+        // Apparently, this updates the nz table data...
+        this.consents = [...this.consents];
       });
   }
 
@@ -92,39 +95,34 @@ export class HipaaTableNzComponent implements OnInit {
     });
 
     modalRef.afterClose
-    .subscribe(result => {
-      if (result) {
-        console.log('openAddConsentModal() [afterClose]:', result);
-        this.add(result);
-      }
-    },
-    (reason) => {});
-
-    // const modalRef = this.modalService.open(AddPatientConsentModal);
-
-    // modalRef.result.then(
-    //   (result) => {
-    //     console.log("openAddConsentModal: result", result);
-    //     this.add(result);
-    //   },
-    //   (reason) => {}
-    // );
+      .subscribe(result => {
+        if (result) {
+          console.log('openAddConsentModal() [afterClose]:', result);
+          this.add(result);
+        }
+      },
+      (reason) => {});
   }
 
   openEditConsentModal(consent: Consent) {
-    // console.log("openEditConsentModal: ", consent);
-    // const modalRef = this.modalService.open(EditPatientConsentModal);
+    const modalRef = this.modalService.create({
+      nzTitle: 'Edit HIPAA Consent',
+      nzContent: EditConsentModalNzComponent,
+      nzComponentParams: {
+        consent: consent
+      }
+    });
 
-    // modalRef.componentInstance.consent = consent;
-    // modalRef.result.then(
-    //   (result) => {
-    //     console.log("openEditConsentModal: result", result);
-    //     if (result) {
-    //       this.update(consent, result);
-    //     }
-    //   },
-    //   (reason) => {}
-    // );
+    modalRef.afterClose
+      .subscribe(result => {
+        if (result) {
+          console.log('openEditConsentModal() [afterClose]:', result);
+          if (result) {
+            this.update(consent, result);
+          }
+        }
+      },
+      (reason) => {});
   }
 
   openDeleteConsentModal(consent: Consent) {
