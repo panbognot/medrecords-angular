@@ -91,6 +91,7 @@ export class HipaaTableComponent implements OnInit {
   delete(consent: Consent): void {
     this.consents = this.consents.filter(c => c !== consent);
     // TODO: Insert the service deletion here
+    this.consentService.deleteConsent(consent.id).subscribe();
   }
 
   openAddConsentModal() {

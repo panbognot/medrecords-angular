@@ -34,6 +34,17 @@ export class ConsentService {
         );
   }
 
+  // DELETE: delete the consent from the API server
+  deleteConsent(id: number): Observable<Consent> {
+    const url = `${this.consentsUrl}/${id}}`;
+
+    return this.http.delete<Consent>(url, this.httpOptions)
+      .pipe(
+        tap(_ => this.log(`deleted consent id=${id}`)),
+        catchError(this.handleError<Consent>('deleteConsent'))
+      );
+  }
+
 /*
   Handle Http operation that failed. Let the app continue.
   @param operation - name of the operation that failed
