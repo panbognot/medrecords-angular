@@ -39,14 +39,17 @@
             <td>
               <button nz-button nzType="text"
                   nzSize="default" nz-tooltip
-                  [nzTooltipTitle]="ttAttach">
+                  [nzTooltipTitle]="ttAttachView"
+                  (click)="openAttachModal(consent)">
                 <i nz-icon nzType="paper-clip"></i>
+                /
+                <i nz-icon nzType="eye"></i>
               </button>
-              <button nz-button nzType="text"
+              <!-- <button nz-button nzType="text"
                   nzSize="default" nz-tooltip
                   [nzTooltipTitle]="ttView">
                 <i nz-icon nzType="eye"></i>
-              </button>
+              </button> -->
             </td>
             <td>
               <button nz-button nzType="text" nzSize="default"

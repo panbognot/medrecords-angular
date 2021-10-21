@@ -41,6 +41,8 @@ import { ViewFileModal } from './modals/view-file-modal/view-file-modal.componen
 import { DeleteConsentModalNzComponent } from './modals-nz/delete-consent-modal-nz/delete-consent-modal-nz.component';
 import { AddConsentModalNzComponent } from './modals-nz/add-consent-modal-nz/add-consent-modal-nz.component';
 import { EditConsentModalNzComponent } from './modals-nz/edit-consent-modal-nz/edit-consent-modal-nz.component';
+import { AttachFileModalNzComponent } from './modals-nz/attach-file-modal-nz/attach-file-modal-nz.component';
+import { ViewFileModalNzComponent } from './modals-nz/view-file-modal-nz/view-file-modal-nz.component';
 
 registerLocaleData(en);
 
@@ -62,7 +64,9 @@ const icons: IconDefinition[] =
     HipaaTableNzComponent,
     DeleteConsentModalNzComponent,
     AddConsentModalNzComponent,
-    EditConsentModalNzComponent
+    EditConsentModalNzComponent,
+    AttachFileModalNzComponent,
+    ViewFileModalNzComponent
   ],
   imports: [
     BrowserModule,

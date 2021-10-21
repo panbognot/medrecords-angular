@@ -7,8 +7,8 @@ import { ConsentService } from '../services/consent.service';
 // Project Models and Constants
 import { Consent } from '../model/consent';
 import {
-  MESSAGE_ADD, MESSAGE_ATTACH, MESSAGE_VIEW,
-  MESSAGE_EDIT, MESSAGE_DELETE
+  MESSAGE_ADD, MESSAGE_ATTACH, MESSAGE_ATTACH_VIEW,
+  MESSAGE_VIEW, MESSAGE_EDIT, MESSAGE_DELETE
 } from '../constants/tooltip-messages';
 
 // Project Modals
@@ -17,6 +17,7 @@ import {
 } from '../modals-nz/delete-consent-modal-nz/delete-consent-modal-nz.component';
 import { AddConsentModalNzComponent } from '../modals-nz/add-consent-modal-nz/add-consent-modal-nz.component';
 import { EditConsentModalNzComponent } from '../modals-nz/edit-consent-modal-nz/edit-consent-modal-nz.component';
+import { AttachFileModalNzComponent } from '../modals-nz/attach-file-modal-nz/attach-file-modal-nz.component';
 
 @Component({
   selector: 'hipaa-table-nz',
@@ -28,6 +29,7 @@ export class HipaaTableNzComponent implements OnInit {
   // tooltip messages
   ttAdd = MESSAGE_ADD;
   ttAttach = MESSAGE_ATTACH;
+  ttAttachView = MESSAGE_ATTACH_VIEW;
   ttView = MESSAGE_VIEW;
   ttEdit = MESSAGE_EDIT;
   ttDelete = MESSAGE_DELETE;
@@ -146,8 +148,15 @@ export class HipaaTableNzComponent implements OnInit {
       (reason) => {});
   }
 
-  openAttachModal() {
+  openAttachModal(consent: Consent) {
     // const modalRef = this.modalService.open(AttachFileModal);
+    const modalRef = this.modalService.create({
+      nzTitle: 'Attach Files and View Them',
+      nzContent: AttachFileModalNzComponent,
+      nzComponentParams: {
+        consent: consent
+      }
+    });
   }
 
   openViewFileModal(consent: Consent) {
