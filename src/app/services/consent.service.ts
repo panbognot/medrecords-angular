@@ -30,6 +30,15 @@ export class ConsentService {
       );
   }
 
+  // PUT: update the consent on the server
+  updateConsent(consent: Consent): Observable<any> {
+    return this.http.put(this.consentsUrl, consent, this.httpOptions)
+      .pipe(
+        tap(_ => this.log(`updated consent id=${consent.id}`)),
+        catchError(this.handleError<any>('updateConsent'))
+      );
+  }
+
   // POST: add a new consent to the server
   addConsent(consent: Consent): Observable<Consent> {
     return this.http.post<Consent>

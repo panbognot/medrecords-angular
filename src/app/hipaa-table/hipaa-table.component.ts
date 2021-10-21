@@ -89,8 +89,13 @@ export class HipaaTableComponent implements OnInit {
     let index = this.consents.findIndex(
         consent => consent === consentOrig
     );
-    // Replace it with the new consent data
-    this.consents[index] = consentNew;
+
+    // Call the consents service to update the data
+    this.consentService.updateConsent(consentNew)
+      .subscribe(() => {
+        // Update the consent data of this component
+        this.consents[index] = consentNew;
+      });
   }
 
   delete(consent: Consent): void {
