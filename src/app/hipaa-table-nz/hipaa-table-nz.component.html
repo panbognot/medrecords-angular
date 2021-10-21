@@ -1,1 +1,70 @@
-<p>hipaa-table-nz works!</p>
+<div nz-row nzJustify="center">
+  <div nz-col [nzSpan]=23>
+    <nz-card [nzTitle]="titleHeader">
+      <!-- Card Header Template -->
+      <ng-template #titleHeader>
+        HIPPA
+        <button nz-button
+            nzType="text"
+            nzSize="default">
+          <i nz-icon nzType="plus-circle" nzTheme="twotone"
+              nzTwotoneColor="#52c41a">
+          </i>
+        </button>
+      </ng-template>
+      <nz-table #hipaaTable [nzData]="consents">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Status</th>
+            <th>HIPAA Signed</th>
+            <th>HIPAA Expires</th>
+            <th>Attach / View</th>
+            <th>Edit / Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let consent of hipaaTable.data">
+            <td>{{ consent.id }}</td>
+            <td>
+              {{ consent.status }}
+            </td>
+            <td>
+              {{ consent.hipaa_signed | date:'MM/dd/YYYY' }}
+            </td>
+            <td>
+              {{ consent.hipaa_expires | date:'MM/dd/YYYY' }}
+            </td>
+            <td>
+              <button nz-button nzShape="circle"
+                  nzType="default"
+                  nzSize="small">
+                <i nz-icon nzType="paper-clip"></i>
+              </button>
+              <button nz-button nzShape="circle"
+                  nzType="default"
+                  nzSize="small">
+                <i nz-icon nzType="eye"></i>
+              </button>
+            </td>
+            <td>
+              <button nz-button
+                  nzType="text"
+                  nzSize="default">
+                <i nz-icon nzType="edit" nzTheme="twotone">
+                </i>
+              </button>
+              <button nz-button
+                  nzType="text"
+                  nzSize="default">
+                <i nz-icon nzType="delete" nzTheme="twotone"
+                    nzTwotoneColor="#eb2f96">
+                </i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </nz-card>
+  </div>
+</div>

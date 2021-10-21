@@ -6,7 +6,7 @@ import { HipaaTableComponent } from './hipaa-table/hipaa-table.component';
 import { HipaaTableNzComponent } from './hipaa-table-nz/hipaa-table-nz.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/bootstrap', pathMatch: 'full' },
+  { path: '', redirectTo: '/zorro', pathMatch: 'full' },
   { path: 'bootstrap', component: HipaaTableComponent },
   { path: 'zorro', component: HipaaTableNzComponent }
 ];
