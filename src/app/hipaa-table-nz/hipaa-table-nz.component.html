@@ -4,9 +4,9 @@
       <!-- Card Header Template -->
       <ng-template #titleHeader>
         HIPPA
-        <button nz-button
-            nzType="text"
-            nzSize="default">
+        <button nz-button nzType="text" nzSize="default"
+            nz-tooltip nzTooltipColor="green"
+            [nzTooltipTitle]="ttAdd">
           <i nz-icon nzType="plus-circle" nzTheme="twotone"
               nzTwotoneColor="#52c41a">
           </i>
@@ -36,29 +36,29 @@
               {{ consent.hipaa_expires | date:'MM/dd/YYYY' }}
             </td>
             <td>
-              <button nz-button nzShape="circle"
-                  nzType="default"
-                  nzSize="small">
+              <button nz-button nzShape="circle" nzType="default"
+                  nzSize="small" nz-tooltip
+                  [nzTooltipTitle]="ttAttach">
                 <i nz-icon nzType="paper-clip"></i>
               </button>
-              <button nz-button nzShape="circle"
-                  nzType="default"
-                  nzSize="small">
+              <button nz-button nzShape="circle" nzType="default"
+                  nzSize="small" nz-tooltip
+                  [nzTooltipTitle]="ttView">
                 <i nz-icon nzType="eye"></i>
               </button>
             </td>
             <td>
-              <button nz-button
-                  nzType="text"
-                  nzSize="default">
+              <button nz-button nzType="text" nzSize="default"
+                  nz-tooltip nzTooltipColor="blue"
+                  [nzTooltipTitle]="ttEdit">
                 <i nz-icon nzType="edit" nzTheme="twotone">
                 </i>
               </button>
-              <button nz-button
-                  nzType="text"
-                  nzSize="default">
+              <button nz-button nzType="text" nzSize="default"
+                  nz-tooltip nzTooltipColor="red"
+                  [nzTooltipTitle]="ttDelete">
                 <i nz-icon nzType="delete" nzTheme="twotone"
-                    nzTwotoneColor="#eb2f96">
+                    nzTwotoneColor="red">
                 </i>
               </button>
             </td>

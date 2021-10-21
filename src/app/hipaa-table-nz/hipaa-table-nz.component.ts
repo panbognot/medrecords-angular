@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { blue, green } from '@ant-design/colors';
 
 // Project Services
 import { ConsentService } from '../services/consent.service';
 
 // Project Models and Constants
 import { Consent } from '../model/consent';
-import {
-  ICON_ADD, ICON_ATTACH, ICON_VIEW, ICON_EDIT, ICON_DELETE
-} from '../constants/icons';
 import {
   MESSAGE_ADD, MESSAGE_ATTACH, MESSAGE_VIEW,
   MESSAGE_EDIT, MESSAGE_DELETE
@@ -21,13 +17,6 @@ import {
   styleUrls: ['./hipaa-table-nz.component.scss']
 })
 export class HipaaTableNzComponent implements OnInit {
-
-  // Icons to display
-  iAdd = ICON_ADD;
-  iAttach = ICON_ATTACH;
-  iView = ICON_VIEW;
-  iEdit = ICON_EDIT
-  iDelete = ICON_DELETE;
 
   // tooltip messages
   ttAdd = MESSAGE_ADD;
@@ -44,7 +33,6 @@ export class HipaaTableNzComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(blue, green);
     this.getConsents();
   }
 
